@@ -25,7 +25,7 @@ module.exports = function(opt, execFile_opt) {
   var getFlagFilePath = function(files) {
     var dirName = uuid.v4();
     var src = files.map(function(file) {
-      var relativePath = path.relative(file.cwd, file.path);
+      var relativePath = path.relative(file.base, file.path);
       var fullpath = path.join(tmpdir, dirName, relativePath);
       mkdirp.sync(path.dirname(fullpath));
       fs.writeFileSync(fullpath, file.contents.toString());
